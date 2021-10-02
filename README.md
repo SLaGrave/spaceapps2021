@@ -10,3 +10,7 @@
 $ npm install
 $ npm run dev
 ```
+
+## Resources used:
+
+- https://nasa3d.arc.nasa.gov/models
