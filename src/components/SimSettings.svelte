@@ -1,13 +1,13 @@
 <script>
-    let files;
-    export let _mythingamajig = {
-        observer_range: 0,
-        observer_period: 0,
-        obervee_range: 0,
-        observee_period: 0,
-        filename: ""
-    }
-	
+	let files;
+
+	export let settings = {
+		observer_range: 0,
+		observer_period: 0,
+		obervee_range: 0,
+		observee_period: 0,
+		filename: ''
+	};
 
 	$: if (files) {
 		// Note that `files` is of type `FileList`, not an Array:
@@ -16,14 +16,9 @@
 
 		for (const file of files) {
 			alert(`${file.name}: ${file.size} bytes`);
+			settings['filename'] = file.name;
 		}
 	}
-    let simulation = { run: false };
-
-    function toggle() {
-        simulation.run = !simulation.run;
-    }
-    
 </script>
 
 <label for="avatar">Upload STL File:</label>
@@ -37,26 +32,28 @@
 {/if}
 
 <form>
-    Observer Range
-	<input type=number bind:value={_mythingamajig.observer_range} min=0 max=Number.MAX_SAFE_INTEGER> km<br>
-    Observer Period
-	<input type=number bind:value={_mythingamajig.observer_period} min=0 max=Number.MAX_SAFE_INTEGER> years<br>
-    Observee Range
-	<input type=number bind:value={_mythingamajig.observee_range} min=0 max=Number.MAX_SAFE_INTEGER> km<br>
-    Observee Period
-	<input type=number bind:value={_mythingamajig.observee_period} min=0 max=Number.MAX_SAFE_INTEGER> years<br>
+	Observer Range
+	<input type="number" bind:value={settings.observer_range} min="0" max="Number.MAX_SAFE_INTEGER" />
+	km<br />
+	Observer Period
+	<input
+		type="number"
+		bind:value={settings.observer_period}
+		min="0"
+		max="Number.MAX_SAFE_INTEGER"
+	/>
+	years<br />
+	Observee Range
+	<input type="number" bind:value={settings.observee_range} min="0" max="Number.MAX_SAFE_INTEGER" />
+	km<br />
+	Observee Period
+	<input
+		type="number"
+		bind:value={settings.observee_period}
+		min="0"
+		max="Number.MAX_SAFE_INTEGER"
+	/>
+	years<br />
 </form>
 
-{#if simulation.run}
-	<button on:click={toggle}>
-		Stop
-	</button>
-    <!-- Use to start sim with inputs. -->
-{/if}
-
-{#if !simulation.run}
-	<button on:click={toggle}>
-		Run
-	</button>
-    <!-- Use to kill sim. -->
-{/if}
+<button on:click={console.log(settings)}> Run </button>
