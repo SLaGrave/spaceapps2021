@@ -1,7 +1,7 @@
 <script>
 	import ThreeSimulation from '../components/ThreeSimulation.svelte';
 	import ThreeVisualizer from '../components/ThreeVisualizer.svelte';
-	import CanvasTest from '../components/CanvasTest.svelte';
+	import ChartJSPlot from '../components/ChartJSPlot.svelte';
 
 	let ll = 420.69;
 </script>
@@ -18,7 +18,10 @@
 		<ThreeVisualizer width={500} height={500} />
 	</div>
 	<div class="column">Nate's settings component</div>
-	<div class="column">Edwin's graph component</div>
+	<div class="column">
+		Edwin's graph component
+		<ChartJSPlot data={[0, 1, 2, 3, 4]} />
+	</div>
 </div>
 
 <style>
