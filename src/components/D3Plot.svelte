@@ -6,12 +6,7 @@
 	import { onMount } from 'svelte';
 	import * as d3 from 'd3';
 	
-
-	/*create a random dataset of floats*/
-	var data = []
-	for (let i = 0; i < 20; i++) {
-		data[i] = Math.round(Math.random()*200_000) / 1000;
-	}
+	export let data = [0, 1, 2, 3, 4, 5];
 
 	let el;
 
