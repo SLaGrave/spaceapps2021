@@ -3,8 +3,8 @@
 	import * as THREE from 'three';
 
 	// Sizing parameters
-	export let width;
-	export let height;
+	export let width = 500;
+	export let height = 500;
 
 	// // Observer parameters
 	// export let observerDistance;
@@ -14,6 +14,20 @@
 	// export let observeeDistance;
 	// export let observeeOrbitalPeriod;
 	// export let observeeSTLFile;
+	// export let observeeSize;
+
+	///////////////////////////////////////////////////////////////////////////////////////
+	// Visualizer control variables
+	///////////////////////////////////////////////////////////////////////////////////////
+	// Observer
+	let thetaObserver = 0;
+	let deltaThetaObserver = 0.001; // Positive value = counter clockwise
+	let observerScale = 30;
+
+	// Observee
+	let thetaObservee = 0;
+	let deltaThetaObservee = 0.005; // Positive value = counter clockwise
+	let observeeScale = 50;
 
 	let canvasElement;
 
@@ -47,25 +61,21 @@
 		sun.scale.z = 10;
 		scene.add(sun); // Add Sun to scene
 
-		// observer
+		// Observer
 		const observer = new THREE.Mesh(
 			new THREE.SphereGeometry(),
 			new THREE.MeshPhongMaterial({ color: 0x0000ff })
 		);
-		observer.position.x = 30;
-		observer.position.y = 30;
 		observer.scale.x = 1;
 		observer.scale.y = 1;
 		observer.scale.z = 1;
 		scene.add(observer); // Add observer to scene
 
-		// observee
+		// Observee
 		const observee = new THREE.Mesh(
 			new THREE.SphereGeometry(),
 			new THREE.MeshPhongMaterial({ color: 0x777777 })
 		);
-		observee.position.x = -50;
-		observee.position.y = 50;
 		observee.scale.x = 1;
 		observee.scale.y = 1;
 		observee.scale.z = 1;
@@ -78,6 +88,13 @@
 			requestAnimationFrame(animate);
 
 			// Logic goes here
+			thetaObserver += deltaThetaObserver;
+			observer.position.x = observerScale * Math.cos(thetaObserver);
+			observer.position.y = observerScale * Math.sin(thetaObserver);
+
+			thetaObservee += deltaThetaObservee;
+			observee.position.x = observeeScale * Math.cos(thetaObservee);
+			observee.position.y = observeeScale * Math.sin(thetaObservee);
 
 			// Render the scene
 			renderer.render(scene, camera);
@@ -86,4 +103,6 @@
 	});
 </script>
 
+Position(s) of the observer and observee
+<br />
 <canvas bind:this={canvasElement} />
