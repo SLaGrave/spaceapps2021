@@ -1,4 +1,10 @@
 <script>
+	import SimSettings from '../components/SimSettings.svelte';
+
+	let settings;
+
+//<SimSettings bind:settings />
+//<p>Test: {settings}</p>
 	import ThreeSimulation from '../components/ThreeSimulation.svelte';
 	import ThreeVisualizer from '../components/ThreeVisualizer.svelte';
 
