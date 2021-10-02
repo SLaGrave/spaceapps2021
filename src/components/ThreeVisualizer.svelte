@@ -6,28 +6,28 @@
 	export let width = 500;
 	export let height = 500;
 
-	// // Observer parameters
-	// export let observerDistance;
-	// export let observerOrbitalPeriod;
+	// Observer parameters
+	export let observerDistance;
+	export let observerOrbitalPeriod;
 
-	// // Observee parameters
-	// export let observeeDistance;
-	// export let observeeOrbitalPeriod;
+	// Observee parameters
+	export let observeeDistance;
+	export let observeeOrbitalPeriod;
+	export let observeeRotationVelocity;
 	// export let observeeSTLFile;
-	// export let observeeSize;
 
 	///////////////////////////////////////////////////////////////////////////////////////
 	// Visualizer control variables
 	///////////////////////////////////////////////////////////////////////////////////////
 	// Observer
 	let thetaObserver = 0;
-	let deltaThetaObserver = 0.01; // Positive value = counter clockwise
-	let observerScale = 30;
+	let deltaThetaObserver = 1 / observerOrbitalPeriod / 100; // Positive value = counter clockwise
+	let observerScale = observerDistance * 20;
 
 	// Observee
 	let thetaObservee = 0;
-	let deltaThetaObservee = 0.05; // Positive value = counter clockwise
-	let observeeScale = 50;
+	let deltaThetaObservee = 1 / observeeOrbitalPeriod / 100; // Positive value = counter clockwise
+	let observeeScale = observeeDistance * 20;
 
 	let canvasElement;
 
@@ -56,9 +56,9 @@
 			new THREE.SphereGeometry(),
 			new THREE.MeshPhongMaterial({ color: 0xc29e00 })
 		);
-		sun.scale.x = 10;
-		sun.scale.y = 10;
-		sun.scale.z = 10;
+		sun.scale.x = 7;
+		sun.scale.y = 7;
+		sun.scale.z = 7;
 		scene.add(sun); // Add Sun to scene
 
 		// Observer
@@ -95,6 +95,7 @@
 			thetaObservee += deltaThetaObservee;
 			observee.position.x = observeeScale * Math.cos(thetaObservee);
 			observee.position.y = observeeScale * Math.sin(thetaObservee);
+			observee.rotateZ((observeeRotationVelocity / 100) * (Math.PI / 180));
 
 			// Render the scene
 			renderer.render(scene, camera);

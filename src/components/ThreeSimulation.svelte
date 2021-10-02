@@ -6,28 +6,28 @@
 	export let width = 500;
 	export let height = 500;
 
-	// // Observer parameters
-	// export let observerDistance;
-	// export let observerOrbitalPeriod;
+	// Observer parameters
+	export let observerDistance;
+	export let observerOrbitalPeriod;
 
-	// // Observee parameters
-	// export let observeeDistance;
-	// export let observeeOrbitalPeriod;
+	// Observee parameters
+	export let observeeDistance;
+	export let observeeOrbitalPeriod;
+	export let observeeRotationVelocity;
 	// export let observeeSTLFile;
-	// export let observeeSize;
 
 	///////////////////////////////////////////////////////////////////////////////////////
 	// Visualizer control variables
 	///////////////////////////////////////////////////////////////////////////////////////
 	// Observer
 	let thetaObserver = 0;
-	let deltaThetaObserver = 0.01; // Positive value = counter clockwise
-	let observerScale = 30;
+	let deltaThetaObserver = 1 / observerOrbitalPeriod / 100; // Positive value = counter clockwise
+	let observerScale = observerDistance * 20;
 
 	// Observee
 	let thetaObservee = 0;
-	let deltaThetaObservee = 0.05; // Positive value = counter clockwise
-	let observeeScale = 50;
+	let deltaThetaObservee = 1 / observeeOrbitalPeriod / 100; // Positive value = counter clockwise
+	let observeeScale = observeeDistance * 20;
 
 	let canvasElement;
 	let outputBuffer = new Uint8Array(width * height * 4);
@@ -35,8 +35,7 @@
 		return prev + curr;
 	}
 
-	let arr = [];
-
+	export let lightLevelArray = [];
 	export let lightLevel = 0;
 
 	onMount(() => {
@@ -89,7 +88,7 @@
 			thetaObservee += deltaThetaObservee;
 			observee.position.x = observeeScale * Math.cos(thetaObservee);
 			observee.position.z = -1 * observeeScale * Math.sin(thetaObservee);
-			observee.rotateY(0.001);
+			observee.rotateY((observeeRotationVelocity / 100) * (Math.PI / 180));
 
 			// Make camera look at observee
 			camera.lookAt(observee.position);
@@ -102,8 +101,8 @@
 
 			// Subtract the sum of the alpha values
 			lightLevel = outputBuffer.reduce(sum) - width * height * 255;
-			arr.push(lightLevel);
-			// if (thetaObserver % 2*Math.PI <= 0.5) {console.log(arr)}
+			lightLevelArray.push(lightLevel);
+			// if (thetaObserver % 2*Math.PI <= 0.5) {console.log(lightLevelArray)}
 
 			// Check to see if any of the alhpa values are less than 255
 			// outputBuffer.forEach((e, i) => {
@@ -121,5 +120,3 @@
 View of the asteroid (observee) from earth (observer)
 <br />
 <canvas bind:this={canvasElement} />
-<br />
-Light level: {lightLevel}

@@ -1,34 +1,66 @@
 <script>
 	import SimSettings from '../components/SimSettings.svelte';
-
-	let settings;
-
-//<SimSettings bind:settings />
-//<p>Test: {settings}</p>
 	import ThreeSimulation from '../components/ThreeSimulation.svelte';
 	import ThreeVisualizer from '../components/ThreeVisualizer.svelte';
 	import ChartJSPlot from '../components/ChartJSPlot.svelte';
+import ChartJsPlot from '../components/ChartJSPlot.svelte';
 
-	let ll = 420.69;
+	let settings;
+	let lightLevel = 420.69;
+	let lightLevelArray
+
+	// State tracking
+	let isRunning = false;
+	function toggleRunning() {
+		console.log(settings);
+		isRunning = true;
+	}
 </script>
 
-<h1>I Forgor 💀</h1>
+<h1>jo</h1>
+<h2>The Asteroid App of Your Dreams</h2>
 
-<h2>Light Level: {ll}</h2>
+{#if isRunning}
+	<div class="row">
+		<div class="column">
+			<ThreeSimulation
+				width={settings.xbound}
+				height={settings.ybound}
+				observerDistance={settings.observer_distance}
+				observerOrbitalPeriod={settings.observer_period}
+				observeeDistance={settings.observee_distance}
+				observeeOrbitalPeriod={settings.observee_period}
+				observeeRotationVelocity={settings.vr}
+				bind:lightLevel
+				bind:lightLevelArray
+			/>
+		</div>
+		<div class="column">
+			<ThreeVisualizer
+				width={settings.xbound}
+				height={settings.ybound}
+				observerDistance={settings.observer_distance}
+				observerOrbitalPeriod={settings.observer_period}
+				observeeDistance={settings.observee_distance}
+				observeeOrbitalPeriod={settings.observee_period}
+				observeeRotationVelocity={settings.vr}
+				bind:lightLevel
+			/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="column">
+			<ChartJsPlot inputData={lightLevelArray} />
+		</div>
+	</div>	
 
-<div class="row">
-	<div class="column">
-		<ThreeSimulation width={500} height={500} bind:lightLevel={ll} />
-	</div>
-	<div class="column">
-		<ThreeVisualizer width={500} height={500} />
-	</div>
-	<div class="column">Nate's settings component</div>
-	<div class="column">
-		Edwin's graph component
-		<ChartJSPlot data={[0, 1, 2, 3, 4]} />
-	</div>
-</div>
+
+{:else}
+
+	<SimSettings bind:settings />
+	<button on:click={toggleRunning}>Run Simulation</button>
+
+{/if}
 
 <style>
 	.row {

@@ -2,13 +2,13 @@
 	let files;
 
 	export let settings = {
-		observer_range: 0,
-		observer_period: 0,
-		obervee_range: 0,
-		observee_period: 0,
-		vr: 0,
-		xbound: 0,
-		ybound: 0,
+		observer_distance: 1,
+		observer_period: 1,
+		observee_distance: 2,
+		observee_period: 0.5,
+		vr: 360,
+		xbound: 500,
+		ybound: 500,
 		filename: ''
 	};
 
@@ -35,37 +35,45 @@
 {/if}
 
 <form>
-	Observer Range
-	<input type="number" bind:value={settings.observer_range} min="0" max="Number.MAX_SAFE_INTEGER" />
-	km<br />
+	Observer Distance
+	<input
+		type="number"
+		bind:value={settings.observer_distance}
+		min="0.1"
+		max="Number.MAX_SAFE_INTEGER"
+	/>
+	AU<br />
 	Observer Period
 	<input
 		type="number"
 		bind:value={settings.observer_period}
-		min="0"
+		min="0.1"
 		max="Number.MAX_SAFE_INTEGER"
 	/>
 	years<br />
-	Observee Range
-	<input type="number" bind:value={settings.observee_range} min="0" max="Number.MAX_SAFE_INTEGER" />
-	km<br />
+	Observee Distance
+	<input
+		type="number"
+		bind:value={settings.observee_distance}
+		min="0.1"
+		max="Number.MAX_SAFE_INTEGER"
+	/>
+	AU<br />
 	Observee Period
 	<input
 		type="number"
 		bind:value={settings.observee_period}
-		min="0"
+		min="0.1"
 		max="Number.MAX_SAFE_INTEGER"
 	/>
 	years<br />
 	Rotational Velocity
-	<input type="number" bind:value={settings.vr} min="0" max="Number.MAX_SAFE_INTEGER" />
-	deg/frame<br />
+	<input type="number" bind:value={settings.vr} min="0.01" max="Number.MAX_SAFE_INTEGER" />
+	deg/earth day<br />
 	Simulation xbound:
-	<input type="number" bind:value={settings.xbound} min="0" max="202000" />
+	<input type="number" bind:value={settings.xbound} min="200" max="2000" />
 	pixels<br />
 	Simulation ybound
-	<input type="number" bind:value={settings.ybound} min="0" max="202000" />
+	<input type="number" bind:value={settings.ybound} min="200" max="2000" />
 	pixels<br />
 </form>
-
-<button on:click={console.log(settings)}> Run </button>
