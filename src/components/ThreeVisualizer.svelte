@@ -21,12 +21,12 @@
 	///////////////////////////////////////////////////////////////////////////////////////
 	// Observer
 	let thetaObserver = 0;
-	let deltaThetaObserver = 0.001; // Positive value = counter clockwise
+	let deltaThetaObserver = 0.01; // Positive value = counter clockwise
 	let observerScale = 30;
 
 	// Observee
 	let thetaObservee = 0;
-	let deltaThetaObservee = 0.005; // Positive value = counter clockwise
+	let deltaThetaObservee = 0.05; // Positive value = counter clockwise
 	let observeeScale = 50;
 
 	let canvasElement;
@@ -73,7 +73,7 @@
 
 		// Observee
 		const observee = new THREE.Mesh(
-			new THREE.SphereGeometry(),
+			new THREE.BoxGeometry(),
 			new THREE.MeshPhongMaterial({ color: 0x777777 })
 		);
 		observee.scale.x = 1;
