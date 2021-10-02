@@ -21,17 +21,21 @@
 	///////////////////////////////////////////////////////////////////////////////////////
 	// Observer
 	let thetaObserver = 0;
-	let deltaThetaObserver = 0.001; // Positive value = counter clockwise
+	let deltaThetaObserver = 0.01; // Positive value = counter clockwise
 	let observerScale = 30;
 
 	// Observee
 	let thetaObservee = 0;
-	let deltaThetaObservee = 0.005; // Positive value = counter clockwise
+	let deltaThetaObservee = 0.05; // Positive value = counter clockwise
 	let observeeScale = 50;
 
 	let canvasElement;
 	let outputBuffer = new Uint8Array(width * height * 4);
-	function sum(prev, curr) { return prev + curr; }
+	function sum(prev, curr) {
+		return prev + curr;
+	}
+
+	let arr = [];
 
 	export let lightLevel = 0;
 
@@ -55,7 +59,7 @@
 		///////////////////////////////////////////////////////////////////////////////////////
 		// Processing pass setup
 		///////////////////////////////////////////////////////////////////////////////////////
-		const reuseableTarget = new THREE.WebGLRenderTarget(width, height)
+		const reuseableTarget = new THREE.WebGLRenderTarget(width, height);
 		const gl = renderer.getContext();
 
 		///////////////////////////////////////////////////////////////////////////////////////
@@ -85,6 +89,7 @@
 			thetaObservee += deltaThetaObservee;
 			observee.position.x = observeeScale * Math.cos(thetaObservee);
 			observee.position.z = -1 * observeeScale * Math.sin(thetaObservee);
+			observee.rotateY(0.001);
 
 			// Make camera look at observee
 			camera.lookAt(observee.position);
@@ -96,23 +101,25 @@
 			gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, outputBuffer);
 
 			// Subtract the sum of the alpha values
-			lightLevel = outputBuffer.reduce(sum) - (width*height*255);
+			lightLevel = outputBuffer.reduce(sum) - width * height * 255;
+			arr.push(lightLevel);
+			// if (thetaObserver % 2*Math.PI <= 0.5) {console.log(arr)}
 
 			// Check to see if any of the alhpa values are less than 255
-			outputBuffer.forEach((e, i) => {
-				if ((i+1)%4 == 0){
-					if(e!=255){
-						alert("Alpha value less than 255")
-					}
-				}
-			});
+			// outputBuffer.forEach((e, i) => {
+			// 	if ((i+1)%4 == 0){
+			// 		if(e!=255){
+			// 			alert("Alpha value less than 255")
+			// 		}
+			// 	}
+			// });
 		}
 		animate();
 	});
 </script>
 
 View of the asteroid (observee) from earth (observer)
-<br>
+<br />
 <canvas bind:this={canvasElement} />
 <br />
 Light level: {lightLevel}

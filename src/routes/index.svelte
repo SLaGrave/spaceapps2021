@@ -1,8 +1,9 @@
 <script>
 	import ThreeSimulation from '../components/ThreeSimulation.svelte';
 	import ThreeVisualizer from '../components/ThreeVisualizer.svelte';
+	import CanvasTest from '../components/CanvasTest.svelte';
 
-    let ll = 420.69;
+	let ll = 420.69;
 </script>
 
 <h1>I Forgor 💀</h1>
@@ -10,18 +11,14 @@
 <h2>Light Level: {ll}</h2>
 
 <div class="row">
-    <div class="column">
-        <ThreeSimulation width={500} height={500} bind:lightLevel={ll} />
-    </div>
-    <div class="column">
-        <ThreeVisualizer width={500} height={500} />
-    </div>
-    <div class="column">
-        Nate's settings component
-    </div>
-    <div class="column">
-        Edwin's graph component
-    </div>
+	<div class="column">
+		<ThreeSimulation width={500} height={500} bind:lightLevel={ll} />
+	</div>
+	<div class="column">
+		<ThreeVisualizer width={500} height={500} />
+	</div>
+	<div class="column">Nate's settings component</div>
+	<div class="column">Edwin's graph component</div>
 </div>
 
 <style>
