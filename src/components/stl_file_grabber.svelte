@@ -13,17 +13,11 @@
 </script>
 
 <label for="avatar">Upload STL File:</label>
-<input
-	accept=".stl"
-	bind:files
-	id="avatar"
-	name="avatar"
-	type="file"
-/>
+<input accept=".stl" bind:files id="avatar" name="avatar" type="file" />
 
 {#if files}
 	<h2>Selected files:</h2>
 	{#each Array.from(files) as file}
-		<p>{file.name} ({file.size} bytes) </p>
+		<p>{file.name} ({file.size} bytes)</p>
 	{/each}
 {/if}
