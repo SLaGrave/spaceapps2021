@@ -30,10 +30,10 @@
 	let observeeScale = 50;
 
 	let canvasElement;
-	let outputBuffer = new Uint8Array(width * height * 3);
+	let outputBuffer = new Uint8Array(width * height * 4);
 	function sum(prev, curr) { return prev + curr; }
 
-	let ll = 0;
+	export let lightLevel = 0;
 
 	onMount(() => {
 		///////////////////////////////////////////////////////////////////////////////////////
@@ -61,7 +61,6 @@
 		///////////////////////////////////////////////////////////////////////////////////////
 		// Object Creation
 		///////////////////////////////////////////////////////////////////////////////////////
-
 		// Observee
 		const observee = new THREE.Mesh(
 			new THREE.SphereGeometry(),
@@ -94,9 +93,19 @@
 			renderer.render(scene, camera, reuseableTarget);
 
 			// Process pixels
-			gl.readPixels(0, 0, width, height, gl.RGB, gl.UNSIGNED_BYTE, outputBuffer);
+			gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, outputBuffer);
 
-			ll = outputBuffer.reduce(sum);
+			// Subtract the sum of the alpha values
+			lightLevel = outputBuffer.reduce(sum) - (width*height*255);
+
+			// Check to see if any of the alhpa values are less than 255
+			outputBuffer.forEach((e, i) => {
+				if ((i+1)%4 == 0){
+					if(e!=255){
+						alert("Alpha value less than 255")
+					}
+				}
+			});
 		}
 		animate();
 	});
@@ -106,4 +115,4 @@ View of the asteroid (observee) from earth (observer)
 <br>
 <canvas bind:this={canvasElement} />
 <br />
-Light level: {ll}
+Light level: {lightLevel}
