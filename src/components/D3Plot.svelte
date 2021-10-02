@@ -5,8 +5,14 @@
 <script>
 	import { onMount } from 'svelte';
 	import * as d3 from 'd3';
-	var data = [30, 86, 168, 281, 303, 365];
 	
+
+	/*create a random dataset of floats*/
+	var data = []
+	for (let i = 0; i < 20; i++) {
+		data[i] = Math.round(Math.random()*200_000) / 1000;
+	}
+
 	let el;
 
 	onMount(() => {
@@ -19,18 +25,18 @@
 				return (d*2) + "px";
 			})
 			.text(function(d) {
-				return d;
+				return "Value " + d;
 			});
 	});
 </script>
 
 <style>
 	.chart :global(div) {       /*chart is the name of the graph style*/
-		font: 10px sans-serif;
-		background-color: steelblue;
+		font: 1px sans-serif;
+		background-color: rgb(116, 199, 116);
 		text-align: right;
-		padding: 3px;
-		margin: 1px;
+		padding: 0px;
+		margin: 0px;
 		color: white;
 	}
 </style>
