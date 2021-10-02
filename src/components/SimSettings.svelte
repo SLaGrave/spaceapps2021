@@ -6,9 +6,9 @@
 		observer_period: 0,
 		obervee_range: 0,
 		observee_period: 0,
-        vr: 0,
-        xbound: 0,
-        ybound: 0,
+		vr: 0,
+		xbound: 0,
+		ybound: 0,
 		filename: ''
 	};
 
@@ -57,29 +57,14 @@
 		max="Number.MAX_SAFE_INTEGER"
 	/>
 	years<br />
-    Rotational Velocity
-	<input
-		type="number"
-		bind:value={settings.vr}
-		min="0"
-		max="Number.MAX_SAFE_INTEGER"
-	/>
+	Rotational Velocity
+	<input type="number" bind:value={settings.vr} min="0" max="Number.MAX_SAFE_INTEGER" />
 	deg/frame<br />
-    Simulation xbound:
-	<input
-		type="number"
-		bind:value={settings.xbound}
-		min="0"
-		max="202000"
-	/>
+	Simulation xbound:
+	<input type="number" bind:value={settings.xbound} min="0" max="202000" />
 	pixels<br />
-    Simulation ybound
-	<input
-		type="number"
-		bind:value={settings.ybound}
-		min="0"
-		max="202000"
-	/>
+	Simulation ybound
+	<input type="number" bind:value={settings.ybound} min="0" max="202000" />
 	pixels<br />
 </form>
 
