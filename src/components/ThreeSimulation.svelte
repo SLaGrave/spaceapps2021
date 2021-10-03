@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import * as THREE from 'three';
-	import {STLLoader} from '../../node_modules/three/examples/jsm/loaders/STLLoader.js';
+	import {OBJLoader} from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
 
 	// Sizing parameters
 	export let width = 500;
@@ -15,7 +15,7 @@
 	export let observeeDistance;
 	export let observeeOrbitalPeriod;
 	export let observeeRotationVelocity;
-	export let observeeSTLFile;
+	export let observeeFile;
 
 	///////////////////////////////////////////////////////////////////////////////////////
 	// Visualizer control variables
@@ -40,7 +40,6 @@
 	export let lightLevel = 0;
 
 	onMount(() => {
-		console.log(observeeSTLFile);
 		///////////////////////////////////////////////////////////////////////////////////////
 		// THREE.js Setup
 		///////////////////////////////////////////////////////////////////////////////////////
@@ -66,10 +65,10 @@
 		///////////////////////////////////////////////////////////////////////////////////////
 		// Object Creation
 		///////////////////////////////////////////////////////////////////////////////////////
-		const loader = new STLLoader();
-		loader.load('/STL_models/Bogus Bennu Shape.STL', function (geometry) {
-			const observee = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ color: 0x777777 }));
-			observee.scale.x = 1;
+		const loader = new OBJLoader();
+		loader.load(`/obj_models/${observeeFile}`, function (observee) {
+			// const observee = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ color: 0x777777 }));
+			observee.scale.x = 1;	
 			observee.scale.y = 1;
 			observee.scale.z = 1;
 			scene.add(observee); // Add observee to scene
