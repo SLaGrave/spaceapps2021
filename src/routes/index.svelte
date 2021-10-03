@@ -14,12 +14,15 @@
 		console.log(settings);
 		isRunning = true;
 	}
+
+	function reloadWrapper() {location.reload();}
 </script>
 
 <h1>jo</h1>
 <h2>The Asteroid App of Your Dreams</h2>
 
 {#if isRunning}
+	<button on:click={reloadWrapper}>Change settings nerd</button>
 	<div class="row">
 		<div class="column">
 			<ThreeSimulation
