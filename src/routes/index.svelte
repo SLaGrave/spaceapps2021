@@ -31,6 +31,7 @@ import ChartJsPlot from '../components/ChartJSPlot.svelte';
 				observeeDistance={settings.observee_distance}
 				observeeOrbitalPeriod={settings.observee_period}
 				observeeRotationVelocity={settings.vr}
+				observeeSTLFile={settings.filename}
 				bind:lightLevel
 				bind:lightLevelArray
 			/>

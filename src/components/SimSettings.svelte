@@ -18,7 +18,6 @@
 		console.log(files);
 
 		for (const file of files) {
-			alert(`${file.name}: ${file.size} bytes`);
 			settings['filename'] = file.name;
 		}
 	}
