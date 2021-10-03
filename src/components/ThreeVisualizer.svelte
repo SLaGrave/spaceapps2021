@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import * as THREE from 'three';
+	import {OBJLoader} from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
 
 	// Sizing parameters
 	export let width = 500;
@@ -14,7 +15,7 @@
 	export let observeeDistance;
 	export let observeeOrbitalPeriod;
 	export let observeeRotationVelocity;
-	// export let observeeSTLFile;
+	export let observeeFile;
 
 	///////////////////////////////////////////////////////////////////////////////////////
 	// Visualizer control variables
@@ -71,36 +72,35 @@
 		observer.scale.z = 1;
 		scene.add(observer); // Add observer to scene
 
-		// Observee
-		const observee = new THREE.Mesh(
-			new THREE.BoxGeometry(),
-			new THREE.MeshPhongMaterial({ color: 0x777777 })
-		);
-		observee.scale.x = 1;
-		observee.scale.y = 1;
-		observee.scale.z = 1;
-		scene.add(observee); // Add observee to scene
+		const loader = new OBJLoader();
+		loader.load(`/obj_models/${observeeFile}`, function (observee) {
+			// const observee = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ color: 0x777777 }));
+			observee.scale.x = 1;	
+			observee.scale.y = 1;
+			observee.scale.z = 1;
+			scene.add(observee); // Add observee to scene
 
-		///////////////////////////////////////////////////////////////////////////////////////
-		// Animation Loop
-		///////////////////////////////////////////////////////////////////////////////////////
-		function animate() {
-			requestAnimationFrame(animate);
+			///////////////////////////////////////////////////////////////////////////////////////
+			// Animation Loop
+			///////////////////////////////////////////////////////////////////////////////////////
+			function animate() {
+				requestAnimationFrame(animate);
 
-			// Logic goes here
-			thetaObserver += deltaThetaObserver;
-			observer.position.x = observerScale * Math.cos(thetaObserver);
-			observer.position.y = observerScale * Math.sin(thetaObserver);
+				// Logic goes here
+				thetaObserver += deltaThetaObserver;
+				observer.position.x = observerScale * Math.cos(thetaObserver);
+				observer.position.y = observerScale * Math.sin(thetaObserver);
 
-			thetaObservee += deltaThetaObservee;
-			observee.position.x = observeeScale * Math.cos(thetaObservee);
-			observee.position.y = observeeScale * Math.sin(thetaObservee);
-			observee.rotateZ((observeeRotationVelocity / 100) * (Math.PI / 180));
+				thetaObservee += deltaThetaObservee;
+				observee.position.x = observeeScale * Math.cos(thetaObservee);
+				observee.position.y = observeeScale * Math.sin(thetaObservee);
+				observee.rotateZ((observeeRotationVelocity / 100) * (Math.PI / 180));
 
-			// Render the scene
-			renderer.render(scene, camera);
-		}
-		animate();
+				// Render the scene
+				renderer.render(scene, camera);
+			}
+			animate();
+		});
 	});
 </script>
 

@@ -1,6 +1,4 @@
 <script>
-	let files;
-
 	export let settings = {
 		observer_distance: 1,
 		observer_period: 1,
@@ -11,29 +9,16 @@
 		ybound: 500,
 		filename: ''
 	};
-
-	$: if (files) {
-		// Note that `files` is of type `FileList`, not an Array:
-		// https://developer.mozilla.org/en-US/docs/Web/API/FileList
-		console.log(files);
-
-		for (const file of files) {
-			settings['filename'] = file.name;
-		}
-	}
 </script>
 
-<label for="avatar">Upload STL File:</label>
-<input accept=".stl" bind:files id="avatar" name="avatar" type="file" />
+<label for="filename">Select Object Model:</label>
+<select name="filename" id="filename" bind:value={settings.filename}>
+	<option value="kleo.obj">216 Kleopatra</option>
+	<option value="betulia.obj">1580 Betulia</option>
+	<option value="geographos.obj">1620 Geographos</option>
+</select>
 
-{#if files}
-	<h2>Selected files:</h2>
-	{#each Array.from(files) as file}
-		<p>{file.name} ({file.size} bytes)</p>
-	{/each}
-{/if}
-
-<form>
+<form>	
 	Observer Distance
 	<input
 		type="number"
