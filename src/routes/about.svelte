@@ -12,6 +12,9 @@
     <br> and is made available for the user to plot and view at any point during the sim.
 </p>
 
+<div class="my-12 flex flex-col items-center">
+<iframe width="1211" height="681" src="https://www.youtube.com/embed/MmgxTf4-qq4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 <h2 class="text-2xl text-center my-4 underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
 	<a href="https://github.com/SLaGrave/spaceapps2021">Github Repo</a>
