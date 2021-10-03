@@ -117,6 +117,7 @@
 	});
 </script>
 
-View of the asteroid (observee) from earth (observer)
-<br />
-<canvas bind:this={canvasElement} />
+<div class="mx-12 flex flex-col items-center bg-blue-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+	View of the asteroid (observee) from earth (observer)
+	<canvas bind:this={canvasElement} />
+</div>

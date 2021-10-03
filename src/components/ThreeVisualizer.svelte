@@ -104,6 +104,7 @@
 	});
 </script>
 
-Position(s) of the observer and observee
-<br />
-<canvas bind:this={canvasElement} />
+<div class="mx-12 flex flex-col items-center bg-blue-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+	Position(s) of the observer and observee
+	<canvas bind:this={canvasElement} />
+</div>

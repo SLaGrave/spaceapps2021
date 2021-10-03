@@ -24,7 +24,7 @@
 					{
 						label: 'Light Curve',
 						data: inputData,
-						backgroundColor: 'rgba(255, 99, 132, 0.2)',
+						backgroundColor: 'rgba(52, 211, 153, 1)',
 						borderWidth: 1
 					}
 				]
@@ -51,6 +51,10 @@
 	}
 </script>
 
-<button on:click={reloadGraph}>Reload <b>Light Curve</b> graph</button>
-
-<canvas id="myChart" width="500" height="500" />
+<div class="mx-12 flex flex-col items-center bg-blue-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+	<button
+		class="my-4 bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+		on:click={reloadGraph}>Reload <b>Light Curve</b> graph</button
+	>
+	<canvas id="myChart" width="500" height="500" />
+</div>
