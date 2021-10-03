@@ -1,4 +1,4 @@
-# Unnamed Space Apps 2021 Project
+# jo
 
 **Challenge**: When Light Curves Throw Us Curve Balls
 

@@ -1,6 +1,4 @@
 <script>
-	let files;
-
 	export let settings = {
 		observer_distance: 1,
 		observer_period: 1,
@@ -9,71 +7,86 @@
 		vr: 360,
 		xbound: 500,
 		ybound: 500,
-		filename: ''
+		filename: 'kleo.obj'
 	};
-
-	$: if (files) {
-		// Note that `files` is of type `FileList`, not an Array:
-		// https://developer.mozilla.org/en-US/docs/Web/API/FileList
-		console.log(files);
-
-		for (const file of files) {
-			alert(`${file.name}: ${file.size} bytes`);
-			settings['filename'] = file.name;
-		}
-	}
 </script>
 
-<label for="avatar">Upload STL File:</label>
-<input accept=".stl" bind:files id="avatar" name="avatar" type="file" />
+<div class="w-full max-w-xs">
+	<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+		<label class="block text-gray-700 text-sm font-bold mb-2" for="filename"
+			>Select Object Model:</label
+		>
+		<select name="filename" id="filename" bind:value={settings.filename}>
+			<option value="kleo.obj">216 Kleopatra</option>
+			<option value="betulia.obj">1580 Betulia</option>
+			<option value="geographos.obj">1620 Geographos</option>
+			<option value="1996hw1.obj">1996 Hw1</option>
+			<option value="bacchus.obj">Bacchus</option>
+			<option value="castalia.obj">Castalia</option>
+			<option value="golevka.obj">Golevka</option>
+			<option value="hirestoutatis.obj">Toutatis</option>
+			<option value="ky26.obj">Ky26</option>
+			<option value="Mithra.v1.PA.prograde.mod.obj">Mithra</option>
+			<option value="MKIII.obj">MKIII Spacesuit</option>
+		</select>
 
-{#if files}
-	<h2>Selected files:</h2>
-	{#each Array.from(files) as file}
-		<p>{file.name} ({file.size} bytes)</p>
-	{/each}
-{/if}
-
-<form>
-	Observer Distance
-	<input
-		type="number"
-		bind:value={settings.observer_distance}
-		min="0.1"
-		max="Number.MAX_SAFE_INTEGER"
-	/>
-	AU<br />
-	Observer Period
-	<input
-		type="number"
-		bind:value={settings.observer_period}
-		min="0.1"
-		max="Number.MAX_SAFE_INTEGER"
-	/>
-	years<br />
-	Observee Distance
-	<input
-		type="number"
-		bind:value={settings.observee_distance}
-		min="0.1"
-		max="Number.MAX_SAFE_INTEGER"
-	/>
-	AU<br />
-	Observee Period
-	<input
-		type="number"
-		bind:value={settings.observee_period}
-		min="0.1"
-		max="Number.MAX_SAFE_INTEGER"
-	/>
-	years<br />
-	Rotational Velocity
-	<input type="number" bind:value={settings.vr} min="0.01" max="Number.MAX_SAFE_INTEGER" />
-	deg/earth day<br />
-	Simulation xbound:
-	<input type="number" bind:value={settings.xbound} min="200" max="2000" />
-	pixels<br />
-	Simulation ybound
-	<input type="number" bind:value={settings.ybound} min="200" max="2000" />
-	pixels<br />
-</form>
+		<label class="block text-gray-700 text-sm font-bold mb-2" for="observer_distance"
+			>Observer Distance</label
+		>
+		<input
+			name="observer_distance"
+			type="number"
+			bind:value={settings.observer_distance}
+			min="0.1"
+			max="Number.MAX_SAFE_INTEGER"
+		/>AU
+		<label class="block text-gray-700 text-sm font-bold mb-2" for="observer_distance"
+			>Observer Period</label
+		>
+		<input
+			name="observer_period"
+			type="number"
+			bind:value={settings.observer_period}
+			min="0.1"
+			max="Number.MAX_SAFE_INTEGER"
+		/>
+		years
+		<label class="block text-gray-700 text-sm font-bold mb-2" for="observee_distance"
+			>Observee Distance</label
+		>
+		<input
+			name="observee_distance"
+			type="number"
+			bind:value={settings.observee_distance}
+			min="0.1"
+			max="Number.MAX_SAFE_INTEGER"
+		/>
+		AU
+		<label class="block text-gray-700 text-sm font-bold mb-2" for="observee_period"
+			>Observee Period</label
+		>
+		<input
+			name="observee_period"
+			type="number"
+			bind:value={settings.observee_period}
+			min="0.1"
+			max="Number.MAX_SAFE_INTEGER"
+		/>
+		years
+		<label class="block text-gray-700 text-sm font-bold mb-2" for="vr">Rotational Velocity</label>
+		<input
+			name="vr"
+			type="number"
+			bind:value={settings.vr}
+			min="0.01"
+			max="Number.MAX_SAFE_INTEGER"
+		/>
+		deg/day
+		<label class="block text-gray-700 text-sm font-bold mb-2" for="xbound">Simulation xbound</label>
+		<input name="xbound" type="number" bind:value={settings.xbound} min="200" max="2000" />
+		pixels
+		<label class="block text-gray-700 text-sm font-bold mb-2" for="ybound">Simulation ybound</label>
+		<input name="ybound" type="number" bind:value={settings.ybound} min="200" max="2000" />
+		pixels
+	</form>
+</div>

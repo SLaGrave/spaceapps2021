@@ -51,7 +51,6 @@
 	}
 </script>
 
-
 <button on:click={reloadGraph}>Reload <b>Light Curve</b> graph</button>
 
 <canvas id="myChart" width="500" height="500" />
