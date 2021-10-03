@@ -83,7 +83,7 @@
 			min="0.001"
 			max="Number.MAX_SAFE_INTEGER"
 		/>
-		(Basec on Model Size)
+		(Based on Model Size)
 		<label class="block text-gray-700 text-sm font-bold mb-2" for="vr">Rotational Velocity</label>
 		<input
 			name="vr"
