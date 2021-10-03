@@ -8,14 +8,13 @@
 	export let height = 500;
 
 	// Observer parameters
-	export let observerDistance;
 	export let observerOrbitalPeriod;
 
 	// Observee parameters
-	export let observeeDistance;
 	export let observeeOrbitalPeriod;
 	export let observeeRotationVelocity;
 	export let observeeFile;
+	export let observeeObjScale;
 
 	///////////////////////////////////////////////////////////////////////////////////////
 	// Visualizer control variables
@@ -23,12 +22,12 @@
 	// Observer
 	let thetaObserver = 0;
 	let deltaThetaObserver = 1 / observerOrbitalPeriod / 100; // Positive value = counter clockwise
-	let observerScale = observerDistance * 20;
+	let observerScale = 20;
 
 	// Observee
 	let thetaObservee = 0;
 	let deltaThetaObservee = 1 / observeeOrbitalPeriod / 100; // Positive value = counter clockwise
-	let observeeScale = observeeDistance * 20;
+	let observeeScale = 50;
 
 	let canvasElement;
 
@@ -75,9 +74,9 @@
 		const loader = new OBJLoader();
 		loader.load(`/obj_models/${observeeFile}`, function (observee) {
 			// const observee = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ color: 0x777777 }));
-			observee.scale.x = 1;
-			observee.scale.y = 1;
-			observee.scale.z = 1;
+			observee.scale.x = observeeObjScale;
+			observee.scale.y = observeeObjScale;
+			observee.scale.z = observeeObjScale;
 			scene.add(observee); // Add observee to scene
 
 			///////////////////////////////////////////////////////////////////////////////////////

@@ -40,6 +40,7 @@
 				observerOrbitalPeriod={settings.observer_period}
 				observeeDistance={settings.observee_distance}
 				observeeOrbitalPeriod={settings.observee_period}
+				observeeObjScale={settings.observee_scale}
 				observeeRotationVelocity={settings.vr}
 				observeeFile={settings.filename}
 				bind:lightLevel
@@ -48,10 +49,9 @@
 			<ThreeVisualizer
 				width={settings.xbound}
 				height={settings.ybound}
-				observerDistance={settings.observer_distance}
 				observerOrbitalPeriod={settings.observer_period}
-				observeeDistance={settings.observee_distance}
 				observeeOrbitalPeriod={settings.observee_period}
+				observeeObjScale={settings.observee_scale}
 				observeeRotationVelocity={settings.vr}
 				observeeFile={settings.filename}
 				bind:lightLevel

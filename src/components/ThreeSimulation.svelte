@@ -16,6 +16,7 @@
 	export let observeeOrbitalPeriod;
 	export let observeeRotationVelocity;
 	export let observeeFile;
+	export let observeeObjScale;
 
 	///////////////////////////////////////////////////////////////////////////////////////
 	// Visualizer control variables
@@ -68,9 +69,9 @@
 		const loader = new OBJLoader();
 		loader.load(`/obj_models/${observeeFile}`, function (observee) {
 			// const observee = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ color: 0x777777 }));
-			observee.scale.x = 1;
-			observee.scale.y = 1;
-			observee.scale.z = 1;
+			observee.scale.x = observeeObjScale;
+			observee.scale.y = observeeObjScale;
+			observee.scale.z = observeeObjScale;
 			scene.add(observee); // Add observee to scene
 
 			///////////////////////////////////////////////////////////////////////////////////////
