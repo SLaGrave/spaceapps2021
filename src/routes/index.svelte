@@ -18,8 +18,8 @@
 	function reloadWrapper() {location.reload();}
 </script>
 
-<h1>jo</h1>
-<h2>The Asteroid App of Your Dreams</h2>
+<h1 class="text-8xl text-center my-4 lowercase">jo</h1>
+<h2 class="text-2xl text-center my-4">The <del>Trojan Asteroid</del> Light Curve App of Your Dreams</h2>
 
 {#if isRunning}
 	<button on:click={reloadWrapper}>Change settings nerd</button>
