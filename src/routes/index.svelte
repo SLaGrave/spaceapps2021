@@ -6,7 +6,7 @@
 
 	let settings;
 	let lightLevel = 420.69;
-	let lightLevelArray
+	let lightLevelArray;
 
 	// State tracking
 	let isRunning = false;
@@ -15,11 +15,15 @@
 		isRunning = true;
 	}
 
-	function reloadWrapper() {location.reload();}
+	function reloadWrapper() {
+		location.reload();
+	}
 </script>
 
 <h1 class="text-8xl text-center my-4 lowercase">jo</h1>
-<h2 class="text-2xl text-center my-4">The <del>Trojan Asteroid</del> Light Curve App of Your Dreams</h2>
+<h2 class="text-2xl text-center my-4">
+	The <del>Trojan Asteroid</del> Light Curve App of Your Dreams
+</h2>
 
 {#if isRunning}
 	<button on:click={reloadWrapper}>Change settings nerd</button>
@@ -56,14 +60,12 @@
 		<div class="column">
 			<ChartJsPlot inputData={lightLevelArray} />
 		</div>
-	</div>	
-
-
+	</div>
 {:else}
-
-	<SimSettings bind:settings />
-	<button on:click={toggleRunning}>Run Simulation</button>
-
+	<div class="my-12 flex flex-col items-center">
+		<SimSettings bind:settings />
+		<button on:click={toggleRunning} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Run Simulation</button>
+	</div>
 {/if}
 
 <style>
