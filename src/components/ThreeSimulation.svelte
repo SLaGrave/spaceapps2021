@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import * as THREE from 'three';
+	import {STLLoader} from '../../node_modules/three/examples/jsm/loaders/STLLoader.js';
 
 	// Sizing parameters
 	export let width = 500;
@@ -64,56 +65,55 @@
 		///////////////////////////////////////////////////////////////////////////////////////
 		// Object Creation
 		///////////////////////////////////////////////////////////////////////////////////////
-		// Observee
-		const observee = new THREE.Mesh(
-			new THREE.SphereGeometry(),
-			new THREE.MeshPhongMaterial({ color: 0x777777 })
-		);
-		observee.scale.x = 1;
-		observee.scale.y = 1;
-		observee.scale.z = 1;
-		scene.add(observee); // Add observee to scene
+		const loader = new STLLoader();
+		loader.load('../../STL_models/Bogus Bennu Shape.STL', function (geometry) {
+			const observee = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ color: 0x777777 }));
+			observee.scale.x = 10;
+			observee.scale.y = 10;
+			observee.scale.z = 10;
+			scene.add(observee); // Add observee to scene
 
-		///////////////////////////////////////////////////////////////////////////////////////
-		// Animation Loop
-		///////////////////////////////////////////////////////////////////////////////////////
-		function animate() {
-			requestAnimationFrame(animate);
+			///////////////////////////////////////////////////////////////////////////////////////
+			// Animation Loop
+			///////////////////////////////////////////////////////////////////////////////////////
+			function animate() {
+				requestAnimationFrame(animate);
 
-			// Logic goes here
-			thetaObserver += deltaThetaObserver;
-			camera.position.x = observerScale * Math.cos(thetaObserver);
-			camera.position.z = -1 * observerScale * Math.sin(thetaObserver);
+				// Logic goes here
+				thetaObserver += deltaThetaObserver;
+				camera.position.x = observerScale * Math.cos(thetaObserver);
+				camera.position.z = -1 * observerScale * Math.sin(thetaObserver);
 
-			thetaObservee += deltaThetaObservee;
-			observee.position.x = observeeScale * Math.cos(thetaObservee);
-			observee.position.z = -1 * observeeScale * Math.sin(thetaObservee);
-			observee.rotateY((observeeRotationVelocity / 100) * (Math.PI / 180));
+				thetaObservee += deltaThetaObservee;
+				observee.position.x = observeeScale * Math.cos(thetaObservee);
+				observee.position.z = -1 * observeeScale * Math.sin(thetaObservee);
+				observee.rotateY((observeeRotationVelocity / 100) * (Math.PI / 180));
 
-			// Make camera look at observee
-			camera.lookAt(observee.position);
+				// Make camera look at observee
+				camera.lookAt(observee.position);
 
-			// Render the scene
-			renderer.render(scene, camera, reuseableTarget);
+				// Render the scene
+				renderer.render(scene, camera, reuseableTarget);
 
-			// Process pixels
-			gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, outputBuffer);
+				// Process pixels
+				gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, outputBuffer);
 
-			// Subtract the sum of the alpha values
-			lightLevel = outputBuffer.reduce(sum) - width * height * 255;
-			lightLevelArray.push(lightLevel);
-			// if (thetaObserver % 2*Math.PI <= 0.5) {console.log(lightLevelArray)}
+				// Subtract the sum of the alpha values
+				lightLevel = outputBuffer.reduce(sum) - width * height * 255;
+				lightLevelArray.push(lightLevel);
+				// if (thetaObserver % 2*Math.PI <= 0.5) {console.log(lightLevelArray)}
 
-			// Check to see if any of the alhpa values are less than 255
-			// outputBuffer.forEach((e, i) => {
-			// 	if ((i+1)%4 == 0){
-			// 		if(e!=255){
-			// 			alert("Alpha value less than 255")
-			// 		}
-			// 	}
-			// });
-		}
-		animate();
+				// Check to see if any of the alhpa values are less than 255
+				// outputBuffer.forEach((e, i) => {
+				// 	if ((i+1)%4 == 0){
+				// 		if(e!=255){
+				// 			alert("Alpha value less than 255")
+				// 		}
+				// 	}
+				// });
+			}
+			animate();
+		});
 	});
 </script>
 
