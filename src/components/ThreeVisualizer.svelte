@@ -104,6 +104,7 @@
 </script>
 
 <div class="mx-12 flex flex-col items-center bg-blue-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
-	Position(s) of the observer and observee
+	Overall/Positional view
+	<br>This view approximates where the two objects are relative to each other and the sun.
 	<canvas bind:this={canvasElement} />
 </div>

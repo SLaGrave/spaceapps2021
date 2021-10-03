@@ -119,6 +119,7 @@
 </script>
 
 <div class="mx-12 flex flex-col items-center bg-blue-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
-	View of the asteroid (observee) from earth (observer)
+	Observer's view
+	<br>This is the view that is used to calculate the light curve (shown below).
 	<canvas bind:this={canvasElement} />
 </div>
