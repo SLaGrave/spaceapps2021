@@ -64,7 +64,11 @@
 {:else}
 	<div class="my-12 flex flex-col items-center">
 		<SimSettings bind:settings />
-		<button on:click={toggleRunning} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Run Simulation</button>
+		<button
+			on:click={toggleRunning}
+			class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+			>Run Simulation</button
+		>
 	</div>
 {/if}
 
