@@ -2,8 +2,7 @@
 	import SimSettings from '../components/SimSettings.svelte';
 	import ThreeSimulation from '../components/ThreeSimulation.svelte';
 	import ThreeVisualizer from '../components/ThreeVisualizer.svelte';
-	import ChartJSPlot from '../components/ChartJSPlot.svelte';
-import ChartJsPlot from '../components/ChartJSPlot.svelte';
+	import ChartJsPlot from '../components/ChartJSPlot.svelte';
 
 	let settings;
 	let lightLevel = 420.69;

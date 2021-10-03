@@ -67,7 +67,7 @@
 		// Object Creation
 		///////////////////////////////////////////////////////////////////////////////////////
 		const loader = new STLLoader();
-		loader.load('../../STL_models/Bogus Bennu Shape.STL', function (geometry) {
+		loader.load('/STL_models/Bogus Bennu Shape.STL', function (geometry) {
 			const observee = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ color: 0x777777 }));
 			observee.scale.x = 10;
 			observee.scale.y = 10;
