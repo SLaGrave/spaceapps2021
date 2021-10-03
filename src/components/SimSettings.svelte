@@ -17,9 +17,17 @@
 			>Select Object Model:</label
 		>
 		<select name="filename" id="filename" bind:value={settings.filename}>
-			<option selected="selected" value="kleo.obj">216 Kleopatra</option>
+			<option value="kleo.obj">216 Kleopatra</option>
 			<option value="betulia.obj">1580 Betulia</option>
 			<option value="geographos.obj">1620 Geographos</option>
+			<option value="1996hw1.obj">1996 Hw1</option>
+			<option value="bacchus.obj">Bacchus</option>
+			<option value="castalia.obj">Castalia</option>
+			<option value="golevka.obj">Golevka</option>
+			<option value="hirestoutatis.obj">Toutatis</option>
+			<option value="ky26.obj">Ky26</option>
+			<option value="Mithra.v1.PA.prograde.mod.obj">Mithra</option>
+			<option value="MKIII.obj">MKIII Spacesuit</option>
 		</select>
 
 		<label class="block text-gray-700 text-sm font-bold mb-2" for="observer_distance"
