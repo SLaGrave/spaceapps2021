@@ -17,12 +17,11 @@
 	<option value="betulia.obj">1580 Betulia</option>
 	<option value="geographos.obj">1620 Geographos</option>
 	<option value="1996hw1.obj">1996 Hw1</option>
-	<option value="bacchus.obj">Bacchus</option>
-	<option value="castalia.obj">Castalia</option>
-	<option value="golevka.obj">Golevka</option>
-	<option value="hirestoutatis.obj">Toutatis</option>
-	<option value="ky26.obj">Ky26</option>
-	<option value="Mithra.v1.PA.prograde.mod.obj">Mithra</option>
+	<option value="bacchus.obj">2068 Bacchus</option>
+	<option value="castalia.obj">4769 Castalia</option>
+	<option value="golevka.obj">6489 Golevka</option>
+	<option value="hirestoutatis.obj">4179 Toutatis</option>
+	<option value="Mithra.v1.PA.prograde.mod.obj">4486 Mithra</option>
 	<option value="MKIII.obj">MKIII Spacesuit</option>
 </select>
 
