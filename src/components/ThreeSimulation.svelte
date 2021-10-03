@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import * as THREE from 'three';
-	import {OBJLoader} from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
+	import { OBJLoader } from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
 
 	// Sizing parameters
 	export let width = 500;
@@ -68,7 +68,7 @@
 		const loader = new OBJLoader();
 		loader.load(`/obj_models/${observeeFile}`, function (observee) {
 			// const observee = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ color: 0x777777 }));
-			observee.scale.x = 1;	
+			observee.scale.x = 1;
 			observee.scale.y = 1;
 			observee.scale.z = 1;
 			scene.add(observee); // Add observee to scene
@@ -117,6 +117,7 @@
 	});
 </script>
 
-View of the asteroid (observee) from earth (observer)
-<br />
-<canvas bind:this={canvasElement} />
+<div class="mx-12 flex flex-col items-center bg-blue-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+	View of the asteroid (observee) from earth (observer)
+	<canvas bind:this={canvasElement} />
+</div>

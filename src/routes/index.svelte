@@ -6,7 +6,7 @@
 
 	let settings;
 	let lightLevel = 420.69;
-	let lightLevelArray
+	let lightLevelArray;
 
 	// State tracking
 	let isRunning = false;
@@ -15,16 +15,24 @@
 		isRunning = true;
 	}
 
-	function reloadWrapper() {location.reload();}
+	function reloadWrapper() {
+		location.reload();
+	}
 </script>
 
-<h1>jo</h1>
-<h2>The Asteroid App of Your Dreams</h2>
+<h1 class="text-8xl text-center my-4 lowercase">jo</h1>
+<h2 class="text-2xl text-center my-4">
+	The <del>Trojan Asteroid</del> Light Curve App of Your Dreams
+</h2>
 
 {#if isRunning}
-	<button on:click={reloadWrapper}>Change settings nerd</button>
-	<div class="row">
-		<div class="column">
+	<div class="my-12 flex flex-col items-center">
+		<button
+			on:click={reloadWrapper}
+			class="my-4 bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+			>Change Settings</button
+		>
+		<div class="mx-12 flex flex-row items-center">
 			<ThreeSimulation
 				width={settings.xbound}
 				height={settings.ybound}
@@ -37,8 +45,6 @@
 				bind:lightLevel
 				bind:lightLevelArray
 			/>
-		</div>
-		<div class="column">
 			<ThreeVisualizer
 				width={settings.xbound}
 				height={settings.ybound}
@@ -51,33 +57,15 @@
 				bind:lightLevel
 			/>
 		</div>
+		<ChartJsPlot inputData={lightLevelArray} />
 	</div>
-	<div class="row">
-		<div class="column">
-			<ChartJsPlot inputData={lightLevelArray} />
-		</div>
-	</div>	
-
-
 {:else}
-
-	<SimSettings bind:settings />
-	<button on:click={toggleRunning}>Run Simulation</button>
-
+	<div class="my-12 flex flex-col items-center">
+		<SimSettings bind:settings />
+		<button
+			on:click={toggleRunning}
+			class="bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+			>Run Simulation</button
+		>
+	</div>
 {/if}
-
-<style>
-	.row {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		width: 100%;
-	}
-
-	.column {
-		display: flex;
-		flex-direction: column;
-		flex-basis: 100%;
-		flex: 1;
-	}
-</style>
