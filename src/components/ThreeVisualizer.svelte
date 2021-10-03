@@ -104,7 +104,9 @@
 </script>
 
 <div class="mx-12 flex flex-col items-center bg-blue-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
-	Overall/Positional view
-	<br>This view approximates where the two objects are relative to each other and the sun.
+	<div class="max-w-sm">
+		<b>Overall/Positional view</b>
+		<br>This view approximates where the two objects are relative to each other and the sun.
+	</div>
 	<canvas bind:this={canvasElement} />
 </div>
