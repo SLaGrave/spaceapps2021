@@ -61,6 +61,11 @@
 	</div>
 {:else}
 	<div class="my-12 flex flex-col items-center">
+		<div class="max-w-md bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+			<i>jo</i> is an application which allows users to explore the shape, distance, and orbital
+			period of an object such as an asteroid effect its light curve. More information on light
+			curves and this project as a whole can be found on our <a class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" href="/about">about page</a>.
+		</div>
 		<SimSettings bind:settings />
 		<button
 			on:click={toggleRunning}

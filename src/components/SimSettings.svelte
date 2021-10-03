@@ -12,7 +12,7 @@
 	};
 </script>
 
-<div class="w-full max-w-md">
+<div class="w-full max-w-md my-8">
 	<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
 		<label class="block text-gray-700 text-sm font-bold mb-2" for="filename"
 			>Select Object Model:</label

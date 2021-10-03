@@ -56,6 +56,7 @@
 		class="my-4 bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
 		on:click={reloadGraph}>Reload <b>Light Curve</b> graph</button
 	>
-	This graph shows how the amount of light reflected off the observed object changes with the two object's relative position.
+	This graph shows how the amount of light reflected off the observed object changes with the two object's
+	relative position.
 	<canvas id="myChart" width="500" height="500" />
 </div>

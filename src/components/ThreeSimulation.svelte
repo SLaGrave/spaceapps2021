@@ -121,7 +121,7 @@
 <div class="mx-12 flex flex-col items-center bg-blue-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
 	<div class="max-w-sm">
 		<b>Observer's view</b>
-		<br>This is the view that is used to calculate the light curve (shown below).
+		<br />This is the view that is used to calculate the light curve (shown below).
 	</div>
 	<canvas bind:this={canvasElement} />
 </div>
