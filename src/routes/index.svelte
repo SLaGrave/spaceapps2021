@@ -26,9 +26,13 @@
 </h2>
 
 {#if isRunning}
-	<button on:click={reloadWrapper}>Change settings nerd</button>
-	<div class="row">
-		<div class="column">
+	<div class="my-12 flex flex-col items-center">
+		<button
+			on:click={reloadWrapper}
+			class="my-4 bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+			>Change Settings</button
+		>
+		<div class="mx-12 flex flex-row items-center">
 			<ThreeSimulation
 				width={settings.xbound}
 				height={settings.ybound}
@@ -41,8 +45,6 @@
 				bind:lightLevel
 				bind:lightLevelArray
 			/>
-		</div>
-		<div class="column">
 			<ThreeVisualizer
 				width={settings.xbound}
 				height={settings.ybound}
@@ -55,35 +57,15 @@
 				bind:lightLevel
 			/>
 		</div>
-	</div>
-	<div class="row">
-		<div class="column">
-			<ChartJsPlot inputData={lightLevelArray} />
-		</div>
+		<ChartJsPlot inputData={lightLevelArray} />
 	</div>
 {:else}
 	<div class="my-12 flex flex-col items-center">
 		<SimSettings bind:settings />
 		<button
 			on:click={toggleRunning}
-			class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+			class="bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
 			>Run Simulation</button
 		>
 	</div>
 {/if}
-
-<style>
-	.row {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		width: 100%;
-	}
-
-	.column {
-		display: flex;
-		flex-direction: column;
-		flex-basis: 100%;
-		flex: 1;
-	}
-</style>
