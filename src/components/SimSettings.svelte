@@ -28,6 +28,7 @@
 			<option value="hirestoutatis.obj">4179 Toutatis</option>
 			<option value="kleo.obj">216 Kleopatra</option>
 			<option value="MKIII.obj">MKIII Spacesuit</option>
+			<option value="tinker.obj">Imperial Star Destroyer</option>
 		</select>
 
 		<label class="block text-gray-700 text-sm font-bold mb-2" for="observer_distance"
