@@ -3,20 +3,19 @@
 	import * as THREE from 'three';
 	import { OBJLoader } from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
 
-	// Sizing parameters
-	export let width = 500;
-	export let height = 500;
-
-	// Observer parameters
-	export let observerDistance;
-	export let observerOrbitalPeriod;
-
-	// Observee parameters
-	export let observeeDistance;
-	export let observeeOrbitalPeriod;
-	export let observeeRotationVelocity;
-	export let observeeFile;
-	export let observeeObjScale;
+	let {
+		width = 500,
+		height = 500,
+		observerDistance,
+		observerOrbitalPeriod,
+		observeeDistance,
+		observeeOrbitalPeriod,
+		observeeRotationVelocity,
+		observeeFile,
+		observeeObjScale,
+		lightLevelArray = [],
+		lightLevel = 0
+	} = $props()
 
 	///////////////////////////////////////////////////////////////////////////////////////
 	// Visualizer control variables
@@ -36,9 +35,6 @@
 	function sum(prev, curr) {
 		return prev + curr;
 	}
-
-	export let lightLevelArray = [];
-	export let lightLevel = 0;
 
 	onMount(() => {
 		///////////////////////////////////////////////////////////////////////////////////////

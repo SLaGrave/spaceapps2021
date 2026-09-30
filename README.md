@@ -1,45 +1,65 @@
-# jo
+# Svelte library
 
-A submission for Nasa Space Apps 2021
+Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
 
-**Challenge**: When Light Curves Throw Us Curve Balls
+Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
 
-**Team**: Sam Sucks
+## Creating a project
 
-Team Sam Sucks selected the light curve challenge. In order to fulfill the requirements, the team developed a web-app which produces light curves from Earth's perspective for objects orbiting the sun. The app allows a user to select a model from a drop down menu, enter generic settings for the simulation including orbital period and the radius of orbit (using simplified, circular orbits) as well as the rotational speed of the model, and finally scaling settings for the simulation window. A simulation is produced and displayed. The light intensity from the object is calculated based on pixel brightness, and is made available for the user to plot and view at any point during the sim.
-
-## Hosted instance
-
-An instance of *jo* is hosted to allow users to try the software without having to install it from source.
-
-[spacejo.co](https://www.spacejo.co/)
-
-## Local installation
-
-*jo* can be installed and developed on locally using npm. Steps to setup a local development environment are listed below.
+If you're seeing this, you've probably already done this step. Congrats!
 
 ```sh
-$ npm install
-$ npm run dev
+# create a new project in the current directory
+npx sv create
+
+# create a new project in my-app
+npx sv create my-app
 ```
 
-## Data used:
+To recreate this project with the same configuration:
 
-In total, our team used nine different asteroids models, as well as the MKIII spacesuit model, in order to demo our web-app. "
+```sh
+# recreate this project
+npx sv@0.17.1 create --template library --types jsdoc --install npm ./
+```
 
-- https://nasa3d.arc.nasa.gov/models 
-- https://echo.jpl.nasa.gov/asteroids/shapes/shapes.html
+## Developing
 
-## Resources used:
-- Porkbun/GoDaddy/SpaceApps free domain offer
-- Github
-- Dicsord
-- Vercel
-  
-## Tools used:
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-- Javascript
-- Sveltekit
-- tailwind css
-- THREE.js
-- Chart.js" 
+```sh
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+
+## Building
+
+To build your library:
+
+```sh
+npm pack
+```
+
+To create a production version of your showcase app:
+
+```sh
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+## Publishing
+
+Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
+
+To publish your library to [npm](https://www.npmjs.com):
+
+```sh
+npm publish
+```
