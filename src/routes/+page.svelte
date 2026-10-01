@@ -4,12 +4,12 @@
 	import ThreeVisualizer from '../components/ThreeVisualizer.svelte';
 	import ChartJsPlot from '../components/ChartJSPlot.svelte';
 
-	let settings;
-	let lightLevel = 420.69;
-	let lightLevelArray;
+	let settings = $state();
+	let lightLevel = $state(420.69);
+	let lightLevelArray = $state();
 
 	// State tracking
-	let isRunning = false;
+	let isRunning = $state(false);
 	function toggleRunning() {
 		console.log(settings);
 		isRunning = true;
@@ -28,7 +28,7 @@
 {#if isRunning}
 	<div class="my-12 flex flex-col items-center">
 		<button
-			on:click={reloadWrapper}
+			onclick={reloadWrapper}
 			class="my-4 bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
 			>Change Settings</button
 		>
@@ -68,7 +68,7 @@
 		</div>
 		<SimSettings bind:settings />
 		<button
-			on:click={toggleRunning}
+			onclick={toggleRunning}
 			class="bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
 			>Run Simulation</button
 		>

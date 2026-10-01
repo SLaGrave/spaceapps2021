@@ -3,18 +3,15 @@
 	import * as THREE from 'three';
 	import { OBJLoader } from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js';
 
-	// Sizing parameters
-	export let width = 500;
-	export let height = 500;
-
-	// Observer parameters
-	export let observerOrbitalPeriod;
-
-	// Observee parameters
-	export let observeeOrbitalPeriod;
-	export let observeeRotationVelocity;
-	export let observeeFile;
-	export let observeeObjScale;
+	let {
+		width = 500,
+		height = 500,
+		observerOrbitalPeriod,
+		observeeOrbitalPeriod,
+		observeeRotationVelocity,
+		observeeFile,
+		observeeObjScale,
+	} = $props()
 
 	///////////////////////////////////////////////////////////////////////////////////////
 	// Visualizer control variables
@@ -108,5 +105,5 @@
 		<b>Overall/Positional view</b>
 		<br />This view approximates where the two objects are relative to each other and the sun.
 	</div>
-	<canvas bind:this={canvasElement} />
+	<canvas bind:this={canvasElement}></canvas>
 </div>

@@ -1,5 +1,6 @@
 <script>
-	export let settings = {
+let {
+	settings = {
 		observer_distance: 1,
 		observer_period: 1,
 		observee_distance: 2,
@@ -9,7 +10,8 @@
 		xbound: 500,
 		ybound: 500,
 		filename: 'Mithra.v1.PA.prograde.mod.obj'
-	};
+	}
+} = $props()
 </script>
 
 <div class="w-full max-w-md my-8">
@@ -28,6 +30,7 @@
 			<option value="hirestoutatis.obj">4179 Toutatis</option>
 			<option value="kleo.obj">216 Kleopatra</option>
 			<option value="MKIII.obj">MKIII Spacesuit</option>
+			<option value="tinker.obj">Imperial Star Destroyer</option>
 		</select>
 
 		<label class="block text-gray-700 text-sm font-bold mb-2" for="observer_distance"

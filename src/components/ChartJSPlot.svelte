@@ -1,8 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
-	import Chart from 'chart.js/auto/auto.js';
+	import Chart from 'chart.js/auto';
 
-	export let inputData = [12, 19, 3, 5, 2, 3];
+	let {inputData = [12, 19, 3, 5, 2, 3]} = $props();
 
 	let ctx;
 	let myChart;
@@ -54,9 +54,9 @@
 <div class="mx-12 flex flex-col items-center bg-blue-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
 	<button
 		class="my-4 bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
-		on:click={reloadGraph}>Reload <b>Light Curve</b> graph</button
+		onclick={reloadGraph}>Reload <b>Light Curve</b> graph</button
 	>
 	This graph shows how the amount of light reflected off the observed object changes with the two object's
 	relative position.
-	<canvas id="myChart" width="500" height="500" />
+	<canvas id="myChart" width="500" height="500"></canvas>
 </div>
