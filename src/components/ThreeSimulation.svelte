@@ -119,5 +119,5 @@
 		<b>Observer's view</b>
 		<br />This is the view that is used to calculate the light curve (shown below).
 	</div>
-	<canvas bind:this={canvasElement} />
+	<canvas bind:this={canvasElement}></canvas>
 </div>

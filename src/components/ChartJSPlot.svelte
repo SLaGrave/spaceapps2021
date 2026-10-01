@@ -58,5 +58,5 @@
 	>
 	This graph shows how the amount of light reflected off the observed object changes with the two object's
 	relative position.
-	<canvas id="myChart" width="500" height="500" />
+	<canvas id="myChart" width="500" height="500"></canvas>
 </div>

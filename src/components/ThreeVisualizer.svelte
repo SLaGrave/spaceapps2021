@@ -105,5 +105,5 @@
 		<b>Overall/Positional view</b>
 		<br />This view approximates where the two objects are relative to each other and the sun.
 	</div>
-	<canvas bind:this={canvasElement} />
+	<canvas bind:this={canvasElement}></canvas>
 </div>
